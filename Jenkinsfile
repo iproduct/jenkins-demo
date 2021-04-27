@@ -4,9 +4,10 @@ pipeline {
     stage('Build') {
       steps {
         echo 'Hello from Jenkins'
-        sh 'mvn --version'
+        dir('15-rest-mvc-boot-hateoas') {
+            bat 'gradlew task'
+        }
       }
     }
-
   }
 }
