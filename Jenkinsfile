@@ -4,10 +4,13 @@ pipeline {
     stage('Build') {
       steps {
         echo 'Hello from Jenkins'
-        dir('15-rest-mvc-boot-hateoas') {
-            bat 'gradlew task'
+        dir(path: '15-rest-mvc-boot-hateoas') {
+          bat 'gradlew task'
         }
+
+        bat(script: 'gradlew test', returnStdout: true, returnStatus: true)
       }
     }
+
   }
 }
